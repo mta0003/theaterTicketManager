@@ -7,9 +7,18 @@ def index(request) :
     return render(request, 'webapp/home.html')
 
 def performance(request) :
-    my_theater = models.Theater.objects.all
+    # my_theater = models.Theater.objects.all
+    my_theater = ['Concert Hall', 'Playhouse']
+    performances_list = []
+    summaryString = "Don't waste your time with this one!"
+    showtimes = ['5:00', '7:00','9:00','11:00']
+    johnPrine = { 'name': 'John Prine', 'img': '/img/johnPrine.png', 'runtime': '4hrs. 1 min.', 'genre': 'Tragedy', 'summary': summaryString, 'showtimes':showtimes }
+    scotty = { 'name': 'Scotty McCreedy', 'img': '/img/scottyMcCreedy.png', 'runtime': '3hrs. 1 min.', 'genre': 'Drama', 'summary': summaryString, 'showtimes':showtimes }
+    performances_list.append(johnPrine)
+    performances_list.append(scotty)
     context = {
-        'theaters': my_theater
+        'theaters': my_theater,
+        'performances': performances_list
     }
     return render(request, 'webapp/performance.html', context)
 
